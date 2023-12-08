@@ -17,11 +17,11 @@
 
                     <div class="avatar">
                       <div class="w-24 rounded-full border border-2 border-indigo-500">
-                        <img src="{{asset('assets/image')}}/User-avatar.svg.png" type="file" accept="image/*" />
+                        <img id="avatarPreview" src="{{asset('assets/image')}}/User-avatar.svg.png" type="file" accept="image/*" />
                       </div>
                     </div>
 
-                    <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" name="profilepic"  accept="image/*" />
+                    <input id="avatarInput" type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" name="profilepic" accept="image/*"  onchange="previewImage(this)"/>
         
                   <div class="form-control">
                     <label class="label">
@@ -115,4 +115,21 @@
         </div>
     </div>
   </div>
+
+
+  <script>
+    function previewImage(input) {
+        var preview = document.getElementById('avatarPreview');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

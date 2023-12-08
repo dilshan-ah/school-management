@@ -40,8 +40,8 @@ class ProfileController extends Controller
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('assets/image/user'), $imageName);
 
-        if ($user->profilepic && file_exists(public_path('assets/image/user/' . $user->profilepic->getClientOriginalExtension()))) {
-            unlink(public_path('assets/image/user/' . $user->profilepic->getClientOriginalExtension()));
+        if ($user->profilepic && file_exists(public_path('assets/image/user/' . $user->profilepic))) {
+            unlink(public_path('assets/image/user/' . $user->profilepic));
         }
 
         $user->profilepic = $imageName;

@@ -8,7 +8,15 @@
         <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
       </div>
       <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <form class="card-body" method="POST" action="{{ route('register') }}">
             @csrf
 
