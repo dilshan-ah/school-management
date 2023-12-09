@@ -16,44 +16,20 @@
             <!-- Sidebar content here -->
             <div class="hero place-items-start">
                 <div class="hero-content w-full flex-col lg:flex-row">
-                    <img src="https://scontent.fdac20-1.fna.fbcdn.net/v/t39.30808-6/340929173_972157847552292_299130629551836093_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=voWvezh3QbkAX-Kr6wD&_nc_ht=scontent.fdac20-1.fna&oh=00_AfBszO04VqBzCikPOIpKLx8oNeCrIBOSmLS8jHTwBy45rg&oe=6577A91D" class="rounded-full w-20 h-20 object-cover shadow-2xl" />
+                    @auth
+                        <img src="{{ auth()->user()->profilepic ? asset('assets/image/user/' . auth()->user()->profilepic) : asset('assets/image/User-avatar.svg.png') }}" />
+                    @endauth    
                     <div>
-                    <h1 class="text-2xl font-bold">Dilshan Ahmed</h1>
-                    
+
+                    @auth
+                    <h1 class="text-2xl font-bold">{{auth()->user()->name}}</h1>
+                    @endauth
                     
                     </div>
                 </div>
-                </div>
+            </div>
 
-                <button class="btn w-full justify-start btn-primary">
-                    <i class="fi fi-rr-house-chimney"></i>
-                    My account
-                </button>
-
-                <button class="btn w-full justify-start bg-white">
-                <i class="fi fi-rr-calendar-day"></i>
-                Class routines
-                </button>
-
-                <button class="btn w-full justify-start bg-white">
-                <i class="fi fi-rr-list-check"></i>
-                Attendance
-                </button>
-
-                <button class="btn w-full justify-start bg-white">
-                <i class="fi fi-rr-e-learning"></i>
-                Online Exams
-                </button>
-
-                <button class="btn w-full justify-start bg-white">
-                <i class="fi fi-rr-memo-circle-check"></i>
-                Marks
-                </button>
-
-                <button class="btn w-full justify-start bg-white">
-                <i class="fi fi-rr-calendar-star"></i>
-                News and events
-                </button>
+                @include('components/side-menu')
             
             </div>
         </div>

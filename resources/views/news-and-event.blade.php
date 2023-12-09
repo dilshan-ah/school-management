@@ -45,11 +45,11 @@
                               <a class="btn btn-circle m-2" href="{{route('edit.news-event',$newsevent->id)}}">
                                   <i class="fi fi-rr-edit text-2xl"></i>
                               </a>
-                              <button class="btn btn-circle m-2" onclick="my_modal_1.showModal()">
+                              <button class="btn btn-circle m-2" onclick="my_modal_{{ $newsevent->id }}.showModal()">
                                 <i class="fi fi-rs-trash text-2xl"></i>
                               </button>
 
-                              <dialog id="my_modal_1" class="modal">
+                              <dialog id="my_modal_{{ $newsevent->id }}" class="modal">
                                 <div class="modal-box">
                                   <h3 class="font-bold text-lg">Hello!</h3>
                                   <p class="py-4">Press ESC key or click the button below to close</p>
@@ -103,11 +103,11 @@
                               <a class="btn btn-circle m-2" href="{{route('edit.news-event',$newsevent->id)}}">
                                   <i class="fi fi-rr-edit text-2xl"></i>
                               </a>
-                              <button class="btn btn-circle m-2" onclick="my_modal_1.showModal()">
+                              <button class="btn btn-circle m-2" onclick="my_modal_{{ $newsevent->id }}.showModal()">
                                 <i class="fi fi-rs-trash text-2xl"></i>
                               </button>
 
-                              <dialog id="my_modal_1" class="modal">
+                              <dialog id="my_modal_{{ $newsevent->id }}" class="modal">
                                 <div class="modal-box">
                                   <h3 class="font-bold text-lg">Hello!</h3>
                                   <p class="py-4">Press ESC key or click the button below to close</p>

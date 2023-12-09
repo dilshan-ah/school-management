@@ -3,25 +3,26 @@
   My account
 </a>
 
-<button class="btn w-full justify-start" id="routines">
+<a class="btn w-full justify-start" href="{{route('class')}}" id="routines">
   <i class="fi fi-rr-calendar-day"></i>
   Class routines
-</button>
+</a>
 
-<button class="btn w-full justify-start" id="attendance">
-  <i class="fi fi-rr-list-check"></i>
-  Attendance
-</button>
 
 <a class="btn w-full justify-start" href="{{route('exam')}}" id="exam">
   <i class="fi fi-rr-e-learning"></i>
   Online Exams
 </a>
 
-<button class="btn w-full justify-start" id="marks">
+<a class="btn w-full justify-start" href="{{route('question')}}" id="question">
+  <i class="fi fi-rr-question-square"></i>
+  Question
+</a>
+
+<a class="btn w-full justify-start" href="{{route('mark')}}" id="marks">
   <i class="fi fi-rr-memo-circle-check"></i>
-  Marks
-</button>
+  Answers & Marks
+</a>
 
 <a class="btn w-full justify-start" href="{{ route('news-event') }}" id="news-event">
   <i class="fi fi-rr-calendar-star"></i>
@@ -34,10 +35,10 @@
 
       var urlToMenuIdMap = {
           '/': 'home',
-          '/routines': 'routines',
-          '/attendance': 'attendance',
+          '/class': 'routines',
           '/exam': 'exam',
-          '/marks': 'marks',
+          '/question': 'question',
+          '/mark': 'marks',
           '/events-news': 'news-event'
       };
 

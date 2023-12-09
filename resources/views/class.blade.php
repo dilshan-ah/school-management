@@ -12,26 +12,26 @@
             @if(auth()->user()->usertype == "teacher")
               <div class="card card-side bg-base-100 shadow-xl mb-5">
                   <div class="card-body">
-                      <h2 class="card-title text-4xl font-bold">Add exam</h2>
-                      <a class="btn btn-primary w-max" href="{{ route('add.exam') }}">Add exam</a>
+                      <h2 class="card-title text-4xl font-bold">Add class</h2>
+                      <a class="btn btn-primary w-max" href="{{ route('add.class') }}">Add class</a>
                   </div>
               </div>
-          @endif 
+            @endif 
 
 
             <div class="bg-base-100 shadow-xl p-8 rounded-2xl mb-5">
-                <h2 class="card-title text-4xl font-bold mb-5">Exams</h2>
+                <h2 class="card-title text-4xl font-bold mb-5">Class routine</h2>
 
                 <div class="overflow-x-auto">
                     <table class="table">
                       <!-- head -->
                       <thead>
                         <tr>
-                          <th>Title</th>
+                          <th>#Sl no</th>
                           <th>Subject</th>
-                          <th>Date</th>
-                          <th>Time</th>
-                          <th>Status</th>
+                          <th>Day</th>
+                          <th>Start time</th>
+                          <th>End time</th>
                           @if(auth()->user()->usertype == "teacher")
                           <th>Action</th>
                           @endif
@@ -39,35 +39,37 @@
                       </thead>
                       <tbody>
                         <!-- row 1 -->
-                        @foreach ($exams as $exam)
+                        @foreach ($classes as $class)
                         <tr>
                           <td>
-                            <div>
-                                <div class="font-bold">{{$exam->name}}</div>
-                                <div class="text-sm opacity-50">{{$exam->type}}</div>
-                            </div>
+                            <div class="font-bold">{{ $loop->iteration }}</div>
+                          </td>
+
+                          <td>{{$class->subject}}</td>
+
+                          <td>
+                            @foreach (json_decode($class->days) as $day)
+                                <span>{{ $day }},</span>
+                            @endforeach
                           </td>
                           <td>
-                            {{$exam->subject}}
-                            
+                            {{$class->formattedStartTime}}
                           </td>
-                          <td>{{$exam->start_date}}</td>
-                          <td> {{ $exam->formattedTime }}</td>
-                          <th>
-                            <button class="btn btn-warning btn-xs">Upcoming</button>
-                          </th>
+                          <td>
+                            {{$class->formattedEndTime}}
+                          </td>
 
                           @if(auth()->user()->usertype == "teacher")
                           <td>
                             <div class="card-actions justify-start">
-                              <a class="btn btn-circle m-2" href="{{route('edit.exam',$exam->id)}}">
+                              <a class="btn btn-circle m-2" href="{{route('edit.class',$class->id)}}">
                                   <i class="fi fi-rr-edit text-md"></i>
                               </a>
-                              <button class="btn btn-circle m-2" onclick="my_modal_{{ $exam->id }}.showModal()">
+                              <button class="btn btn-circle m-2" onclick="my_modal_{{ $class->id }}.showModal()">
                                 <i class="fi fi-rs-trash text-md"></i>
                               </button>
 
-                              <dialog id="my_modal_{{ $exam->id }}" class="modal">
+                              <dialog id="my_modal_{{ $class->id }}" class="modal">
                                 <div class="modal-box">
                                   <h3 class="font-bold text-lg">Hello!</h3>
                                   <p class="py-4">Press ESC key or click the button below to close</p>
@@ -77,7 +79,7 @@
                                       <button class="btn">Close</button>
                                     </form>
 
-                                    <form action="{{route('delete.exam',$exam->id)}}" method="POST">
+                                    <form action="{{route('delete.class',$class->id)}}" method="POST">
                                       <input type="hidden" name="_token" value="JNeYoKquFe9gJQwZFMdCbXpI9dklQzmDIjC3Ukl2" autocomplete="off">                                      <input type="hidden" name="_method" value="DELETE">                                      <button type="submit" class="btn btn-error">Delete</button>
                                     </form>
                                   </div>
