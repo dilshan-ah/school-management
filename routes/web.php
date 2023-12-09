@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NewsEventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,17 @@ Route::middleware('auth')->group(function () {
     });
 
     
+
+    Route::get('/add-news-events',[NewsEventController::class, 'index'])->name('add.news-events');
+    Route::post('/add-news-events',[NewsEventController::class, 'create'])->name('create.news-events');
+    Route::get('/events-news',[NewsEventController::class, 'show'])->name('news-event');
+    Route::get('/single-events-news/{id}',[NewsEventController::class, 'singleview'])->name('single.news-event');
+    Route::get('/edit-events-news/{id}',[NewsEventController::class, 'edit'])->name('edit.news-event');
+    Route::patch('/update-events-news/{id}',[NewsEventController::class, 'update'])->name('update.news-event');
+    Route::delete('/delete-events-news/{id}',[NewsEventController::class, 'destroy'])->name('delete.news-event');
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
