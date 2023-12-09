@@ -13,10 +13,10 @@
   Attendance
 </button>
 
-<button class="btn w-full justify-start" id="exams">
+<a class="btn w-full justify-start" href="{{route('exam')}}" id="exam">
   <i class="fi fi-rr-e-learning"></i>
   Online Exams
-</button>
+</a>
 
 <button class="btn w-full justify-start" id="marks">
   <i class="fi fi-rr-memo-circle-check"></i>
@@ -36,7 +36,7 @@
           '/': 'home',
           '/routines': 'routines',
           '/attendance': 'attendance',
-          '/exams': 'exams',
+          '/exam': 'exam',
           '/marks': 'marks',
           '/events-news': 'news-event'
       };

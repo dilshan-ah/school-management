@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsEventController;
+use App\Http\Controllers\OnlineExamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-events-news/{id}',[NewsEventController::class, 'edit'])->name('edit.news-event');
     Route::patch('/update-events-news/{id}',[NewsEventController::class, 'update'])->name('update.news-event');
     Route::delete('/delete-events-news/{id}',[NewsEventController::class, 'destroy'])->name('delete.news-event');
+
+
+
+    Route::get('/exam',[OnlineExamController::class,'index'])->name('exam');
+    Route::get('/add-exam',[OnlineExamController::class,'create'])->name('add.exam');
 
 
 
